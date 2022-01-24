@@ -79,7 +79,7 @@ Você deverá completar as funções de forma a satisfazer os requisitos listado
 ### Data de entrega
 
 - Projeto individual;
-- Serão 3 dias de projeto;
+- Serão 2 dias de projeto;
 - Data de entrega para avaliação final do projeto: `03/02/2022 - 14:00h`
 
 ---
