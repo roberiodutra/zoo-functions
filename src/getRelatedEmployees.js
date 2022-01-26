@@ -4,11 +4,11 @@ function isManager(id) {
   // Busca se o ID está contido como manager de algum employee
   const bool = data.employees.find((elem) =>
     elem.managers.includes(id));
-  return bool ? true : false;
+  return !!bool;
 }
 
 function getRelatedEmployees(managerId) {
-  let arr = [];
+  const arr = [];
   // Filtra todos os objetos que incluam como manager o ID fornecido
   const filter = data.employees.filter((elem) =>
     elem.managers.includes(managerId));
