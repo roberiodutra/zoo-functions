@@ -28,8 +28,11 @@ function countEntrants(entrants) {
   return { adult, child, senior };
 }
 
-function calculateEntry(entrants) {
-  return !entrants ? 0 : entrants;
+function calculateEntry(entrants = 0) {
+  if (Object.entries(entrants).length === 0) {
+    return 0;
+  }
+  return entrants;
 }
 
 module.exports = { calculateEntry, countEntrants };
