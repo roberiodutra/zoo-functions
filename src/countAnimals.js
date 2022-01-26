@@ -14,7 +14,7 @@ function countAnimals(animal) {
 
     // Se receber parametro e existir a chave sex, retorna a quantidade de species com aquele genero.
     if (animal && animal.sex) {
-      obj = data.species.find((elem) => elem.name === animal.specie)
+      obj = data.species.find((find) => find.name === animal.specie)
         .residents.filter((gender) => gender.sex === animal.sex).length;
     }
   });
