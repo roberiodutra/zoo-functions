@@ -29,7 +29,7 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  return !entrants ? 0 : entrants;
 }
 
 module.exports = { calculateEntry, countEntrants };
