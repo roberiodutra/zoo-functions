@@ -4,14 +4,14 @@ const data = require('../data/zoo_data');
 const toArray = (elem) => {
   const number = [];
   elem.map((obj) => {
-    return Object.keys(obj).map((key) => {
-        if (typeof obj[key] === 'number') {
-          number.push(obj[key]);
-        }
+    Object.keys(obj).map((key) => {
+      if (typeof obj[key] === 'number') {
+        number.push(obj[key]);
+      }
     });
   });
   return number;
-}
+};
 
 // Aqui eu pego a função acima que retorna um array de numeros e faço a comparação de idades, armazenando os resultados e retorno um objeto com key e value como foi requisitado
 function countEntrants(entrants) {
