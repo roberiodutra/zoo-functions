@@ -8,6 +8,7 @@ const toArray = (elem) => {
       if (typeof obj[key] === 'number') {
         number.push(obj[key]);
       }
+      return number;
     });
   });
   return number;
