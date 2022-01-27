@@ -3,12 +3,11 @@ const data = require('../data/zoo_data');
 // Criei uma função que pega apenas os numeros(age) vindos do parametro(obj) e retorna um array
 const toArray = (elem) => {
   const number = [];
-  elem.map((obj) => {
-    Object.keys(obj).map((key) => {
+  elem.map(function(obj) {
+    Object.keys(obj).map(function(key) {
       if (typeof obj[key] === 'number') {
         number.push(obj[key]);
       }
-      return number;
     });
   });
   return number;
