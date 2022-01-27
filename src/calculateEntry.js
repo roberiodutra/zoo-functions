@@ -1,17 +1,7 @@
 const data = require('../data/zoo_data');
 
-// Criei uma função que pega apenas os numeros(age) vindos do parametro(obj) e retorna um array
-const toArray = (elem) => {
-  const number = [];
-  elem.map(function(obj) {
-    Object.keys(obj).map(function(key) {
-      if (typeof obj[key] === 'number') {
-        number.push(obj[key]);
-      }
-    });
-  });
-  return number;
-};
+// Criei uma função que pega apenas os numeros(age) vindos do parametro(obj) e retorna num array
+const toArray = (elem) => elem.map(({ age }) => age);
 
 // Aqui eu pego a função acima que retorna um array de numeros e faço a comparação de idades, armazenando os resultados e retorno um objeto com key e value como foi requisitado
 function countEntrants(entrants) {
