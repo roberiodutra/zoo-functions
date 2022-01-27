@@ -1,5 +1,14 @@
 const data = require('../data/zoo_data');
 
+const entrants = [
+  { name: 'Lara Carvalho', age: 5 },
+  { name: 'Frederico Moreira', age: 5 },
+  { name: 'Pedro Henrique Carvalho', age: 5 },
+  { name: 'Maria Costa', age: 18 },
+  { name: 'Núbia Souza', age: 18 },
+  { name: 'Carlos Nogueira', age: 50 },
+];
+
 const toArray = (elem) => {
   const number = [];
   elem.map(function(obj) {
@@ -29,10 +38,22 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants = 0) {
+  // Salva a tabela de preços em um array, baseado na ordem de retorno da função countEntrants
+  let total = 0;
+  const prices = [data.prices.adult, data.prices.child, data.prices.senior];
+
+  // Sem parametro retorna 0
   if (Object.entries(entrants).length === 0) {
     return 0;
   }
-  return entrants;
+
+  // Pega os valores da função countEntrants e multiplica pelos valores do array prices que ja foi organizado por faixa etaria.
+  Object.values(countEntrants(entrants)).forEach((elem, index) => {
+    total += elem * prices[index];
+  });
+  return total;
 }
+
+console.log(calculateEntry(entrants));
 
 module.exports = { calculateEntry, countEntrants };
