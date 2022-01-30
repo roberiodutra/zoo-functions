@@ -1,7 +1,6 @@
 const data = require('../data/zoo_data');
 
-function getAnimalMap(options) {
-  const area = ['NE', 'NW', 'SE', 'SW'];
+const objNames = (options, sorted, unisex) => {
   const local = {
     NE: [],
     NW: [],
@@ -9,15 +8,34 @@ function getAnimalMap(options) {
     SW: [],
   };
   data.species.forEach((elem) => {
-    for(let i = 0; i < area.length; i += 1) {
-      if (elem.location === area[i]) {
-        local[area[i]].push(elem.name);
-      }
-    }
+    const { location, name, residents } = elem;
+    const resiNames = residents.map(({ name }) => name);
+    const resiSex = residents.filter(({ sex }) => sex === unisex).map(({ name }) => name);
+
+    if (unisex && sorted) {
+      return local[location].push({ [name]: resiSex.sort() });
+    } else if (sorted) {
+      return local[location].push({ [name]: resiNames.sort() });
+    } else if (unisex) {
+      return local[location].push({ [name]: resiSex });
+    } else if (options) {
+      return local[location].push({ [name]: resiNames });
+    };
+    return local[location].push(name);
   });
   return local;
 }
 
-console.log(getAnimalMap());
+function getAnimalMap(options) {
+  if (!options || !options.includeNames === true) {
+    return objNames();
+  } else if (options.sex) {
+    return objNames(options, options.sorted, options.sex);
+  } else if (options.sorted) {
+    return objNames(options, options.sorted);
+  } else if (options.includeNames) {
+    return objNames(options);
+  }
+}
 
 module.exports = getAnimalMap;
