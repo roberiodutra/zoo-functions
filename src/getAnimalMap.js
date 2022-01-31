@@ -39,4 +39,3 @@ function getAnimalMap(options) {
 }
 
 module.exports = getAnimalMap;
-
