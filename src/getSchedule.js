@@ -30,7 +30,7 @@ function getSchedule(scheduleTarget) {
       }
     });
   });
-  
+
   Object.keys(catalogo).forEach((elem) => {
     if (scheduleTarget === elem) {
       catalogo = { [elem]: catalogo[elem] };
