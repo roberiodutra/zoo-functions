@@ -1,8 +1,8 @@
 const data = require('../data/zoo_data');
 
 const { species, hours } = data;
-const hkeys = Object.keys(hours);
-const hValues = Object.values(hours);
+const hourskeys = Object.keys(hours);
+const hoursValues = Object.values(hours);
 
 const arrayWithDays = (scheduleTarget) => {
   let arr = null;
@@ -15,18 +15,18 @@ const arrayWithDays = (scheduleTarget) => {
   return arr;
 };
 
+// Consegui criar um catalogo dinamicamente sem consultar nada, que alegria!
 const catalogoFull = () => {
-  let catalogo = {};
-  hkeys.forEach((elem, index) => {
-    catalogo[elem] = { officeHour: `Open from ${hValues[index]
-      .open}am until ${hValues[index].close}pm` };
+  const catalogo = {};
+  hourskeys.forEach((elem, index) => {
+    catalogo[elem] = { officeHour: `Open from ${hoursValues[index]
+      .open}am until ${hoursValues[index].close}pm` };
     catalogo[elem].exhibition = [];
 
     if (elem === 'Monday') {
       catalogo[elem].officeHour = 'CLOSED';
       catalogo[elem].exhibition = 'The zoo will be closed!';
     }
-
     species.forEach((animals) => {
       const { name, availability } = animals;
       if (availability.includes(elem)) {
@@ -46,7 +46,7 @@ function getSchedule(scheduleTarget) {
   });
 
   if (arrayWithDays(scheduleTarget)) {
-    return arrayWithDays(scheduleTarget); 
+    return arrayWithDays(scheduleTarget);
   }
   return !dayWIthAnimals ? catalogoFull() : dayWIthAnimals;
 }
