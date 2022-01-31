@@ -5,13 +5,13 @@ function getSchedule(scheduleTarget) {
   const hkeys = Object.keys(hours);
   const hValues = Object.values(hours);
   let catalogo = {
-    Tuesday: { officeHour: '', exhibition: [], },
-    Wednesday: { officeHour: '', exhibition: [], },
-    Thursday: { officeHour: '', exhibition: [], },
-    Friday: { officeHour: '', exhibition: [], },
-    Saturday: { officeHour: '', exhibition: [], },
-    Sunday: { officeHour: '', exhibition: [], },
-    Monday: { officeHour: '', exhibition: [], },
+    Tuesday: { officeHour: '', exhibition: [] },
+    Wednesday: { officeHour: '', exhibition: [] },
+    Thursday: { officeHour: '', exhibition: [] },
+    Friday: { officeHour: '', exhibition: [] },
+    Saturday: { officeHour: '', exhibition: [] },
+    Sunday: { officeHour: '', exhibition: [] },
+    Monday: { officeHour: '', exhibition: [] },
   };
 
   hkeys.forEach((elem, index) => {
