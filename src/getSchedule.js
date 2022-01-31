@@ -16,12 +16,10 @@ const arrayWithDays = (scheduleTarget) => {
 };
 
 function getSchedule(scheduleTarget) {
-  let catalogo = { Tuesday: {}, Wednesday: {}, Thursday: {},
-  Friday: {}, Saturday: {}, Sunday: {}, Monday: {} };
-
+  let catalogo = {};
   hkeys.forEach((elem, index) => {
-    catalogo[elem].officeHour = `Open from ${hValues[index]
-      .open}am until ${hValues[index].close}pm`;
+    catalogo[elem] = { officeHour: `Open from ${hValues[index]
+      .open}am until ${hValues[index].close}pm` }
     catalogo[elem].exhibition = [];
 
     if (elem === 'Monday') {
