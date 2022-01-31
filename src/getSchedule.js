@@ -4,9 +4,6 @@ const { species, hours } = data;
 const hkeys = Object.keys(hours);
 const hValues = Object.values(hours);
 
-const objDay = (scheduleTarget) => {
-}
-
 const arrayWithDays = (scheduleTarget) => {
   let arr = null;
   species.forEach((day) => {
