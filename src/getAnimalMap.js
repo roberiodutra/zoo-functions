@@ -34,7 +34,7 @@ const objNames = (options, sorted) => {
 };
 
 function getAnimalMap(options) {
-  if (!options || !options.includeNames === true) {
+  if (!options || !options.includeNames) {
     return objNames();
   }
   if (options.sex) {

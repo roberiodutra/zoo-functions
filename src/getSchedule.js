@@ -1,9 +1,10 @@
 const data = require('../data/zoo_data');
 
+const { species, hours } = data;
+const hkeys = Object.keys(hours);
+const hValues = Object.values(hours);
+
 function getSchedule(scheduleTarget) {
-  const { species, hours } = data;
-  const hkeys = Object.keys(hours);
-  const hValues = Object.values(hours);
   let catalogo = {
     Tuesday: { officeHour: '', exhibition: [] },
     Wednesday: { officeHour: '', exhibition: [] },
