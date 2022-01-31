@@ -4,20 +4,28 @@ const { species, hours } = data;
 const hkeys = Object.keys(hours);
 const hValues = Object.values(hours);
 
+const objDay = (scheduleTarget) => {
+}
+
+const arrayWithDays = (scheduleTarget) => {
+  let arr = null;
+  species.forEach((day) => {
+    const { name, availability } = day;
+    if (scheduleTarget === name) {
+      arr = availability;
+    }
+  });
+  return arr;
+};
+
 function getSchedule(scheduleTarget) {
-  let catalogo = {
-    Tuesday: { officeHour: '', exhibition: [] },
-    Wednesday: { officeHour: '', exhibition: [] },
-    Thursday: { officeHour: '', exhibition: [] },
-    Friday: { officeHour: '', exhibition: [] },
-    Saturday: { officeHour: '', exhibition: [] },
-    Sunday: { officeHour: '', exhibition: [] },
-    Monday: { officeHour: '', exhibition: [] },
-  };
+  let catalogo = { Tuesday: {}, Wednesday: {}, Thursday: {},
+    Friday: {}, Saturday: {}, Sunday: {}, Monday: {} };
 
   hkeys.forEach((elem, index) => {
     catalogo[elem].officeHour = `Open from ${hValues[index]
       .open}am until ${hValues[index].close}pm`;
+    catalogo[elem].exhibition = [];
 
     if (elem === 'Monday') {
       catalogo[elem].officeHour = 'CLOSED';
@@ -37,14 +45,7 @@ function getSchedule(scheduleTarget) {
       return catalogo;
     }
   });
-
-  species.forEach((day) => {
-    const { name, availability } = day;
-    if (scheduleTarget === name) {
-      catalogo = availability;
-      return catalogo;
-    }
-  });
+  if (arrayWithDays(scheduleTarget)) { return arrayWithDays(scheduleTarget); }
   return catalogo;
 }
 
