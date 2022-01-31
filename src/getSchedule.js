@@ -15,17 +15,18 @@ const arrayWithDays = (scheduleTarget) => {
   return arr;
 };
 
-function getSchedule(scheduleTarget) {
+const catalogoFull = () => {
   let catalogo = {};
   hkeys.forEach((elem, index) => {
     catalogo[elem] = { officeHour: `Open from ${hValues[index]
-      .open}am until ${hValues[index].close}pm` }
+      .open}am until ${hValues[index].close}pm` };
     catalogo[elem].exhibition = [];
 
     if (elem === 'Monday') {
       catalogo[elem].officeHour = 'CLOSED';
       catalogo[elem].exhibition = 'The zoo will be closed!';
     }
+
     species.forEach((animals) => {
       const { name, availability } = animals;
       if (availability.includes(elem)) {
@@ -33,15 +34,21 @@ function getSchedule(scheduleTarget) {
       }
     });
   });
+  return catalogo;
+};
 
-  Object.keys(catalogo).forEach((elem) => {
+function getSchedule(scheduleTarget) {
+  let dayWIthAnimals = null;
+  Object.keys(catalogoFull()).forEach((elem) => {
     if (scheduleTarget === elem) {
-      catalogo = { [elem]: catalogo[elem] };
-      return catalogo;
+      dayWIthAnimals = { [elem]: catalogoFull()[elem] };
     }
   });
-  if (arrayWithDays(scheduleTarget)) { return arrayWithDays(scheduleTarget); }
-  return catalogo;
+
+  if (arrayWithDays(scheduleTarget)) {
+    return arrayWithDays(scheduleTarget); 
+  }
+  return !dayWIthAnimals ? catalogoFull() : dayWIthAnimals;
 }
 
 module.exports = getSchedule;
