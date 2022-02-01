@@ -12,6 +12,7 @@ const elder = (specieId) => {
           elderAge = curr.age;
           obj = curr;
         }
+        return obj;
       }, 0);
     }
   });
