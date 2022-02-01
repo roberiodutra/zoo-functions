@@ -23,7 +23,7 @@ function getOldestFromFirstSpecies(param) {
   let animalId = '';
   employees.forEach((elem) => {
     if (elem.id === param) {
-      animalId = elem.responsibleFor[0];
+     [ animalId ] = elem.responsibleFor;
     }
   });
   return elder(animalId);
