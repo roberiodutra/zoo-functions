@@ -1,15 +1,17 @@
 const data = require('../data/zoo_data');
+
 const { employees, species } = data;
 
 const elder = (specieId) => {
   let obj = {};
+  let elderAge = 0;
   species.forEach((elem) => {
     if (elem.id === specieId) {
-      elem.residents.reduce((acc, curr) => {
-        if (curr.age > acc) {
+      elem.residents.reduce((_acc, curr) => {
+        if (curr.age > elderAge) {
+          elderAge = curr.age;
           obj = curr;
         }
-        return acc.age;
       }, 0);
     }
   });
