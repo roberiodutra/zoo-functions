@@ -7,10 +7,9 @@ const elder = (specieId) => {
     if (elem.id === specieId) {
       elem.residents.reduce((acc, curr) => {
         if (curr.age > acc) {
-          acc = curr.age
           obj = curr;
         }
-        return acc;
+        return acc.age;
       }, 0);
     }
   });
