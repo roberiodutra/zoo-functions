@@ -30,14 +30,14 @@ const empSpecies = (p, p2) => {
   const arrSpecies = [];
   const arrLocations = [];
   employees.find(({ id }) => id === p).responsibleFor
-  .forEach((elem) => {
-    species.map((animals) => {
-      if (animals.id === elem) {
-        arrSpecies.push(animals.name);
-        arrLocations.push(animals.location);
-      }
+    .forEach((elem) => {
+      return species.map((animals) => {
+        if (animals.id === elem) {
+          arrSpecies.push(animals.name);
+          arrLocations.push(animals.location);
+        }
+      });
     });
-  });
 
   if (p2) { return arrLocations; }
 
