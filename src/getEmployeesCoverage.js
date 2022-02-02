@@ -43,24 +43,23 @@ const empSpecies = (p, p2) => {
       }
     });
   });
-  if (p2) {return arrLocations;}
+  if (p2) { return arrLocations; }
   return arrSpecies;
 };
 
 function getEmployeesCoverage(param) {
   if (!param) {
     return employees.map((elem) => {
-      const empLists = {};
-      empLists.id = elem.id;
-      empLists.fullName = empName(elem.id);
-      empLists.species = empSpecies(elem.id);
-      empLists.locations = empSpecies(elem.id, true);
+      const empLists = {
+        id: elem.id,
+        fullName: empName(elem.id),
+        species: empSpecies(elem.id),
+        locations: empSpecies(elem.id, true),
+      };
       return empLists;
     });
   }
-  if (!empName(empId(param))) {
-    throw new Error('Informações inválidas');
-  }
+  if (!empName(empId(param))) { throw new Error('Informações inválidas'); }
   return {
     id: empId(param),
     fullName: empName(empId(param)),
