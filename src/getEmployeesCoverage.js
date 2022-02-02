@@ -19,8 +19,9 @@ const empName = (p) => {
   let fullname = '';
   employees.find((elem) => {
     if (elem.id === p) {
-      return fullname = `${elem.firstName} ${elem.lastName}`;
+      fullname = `${elem.firstName} ${elem.lastName}`;
     }
+    return fullname;
   });
   return fullname;
 };
@@ -28,15 +29,12 @@ const empName = (p) => {
 const empSpecies = (p, p2) => {
   const arrSpecies = [];
   const arrLocations = [];
-
   let aniIds = [];
-
   employees.forEach((elem) => {
     if (elem.id === p) {
       aniIds = elem.responsibleFor;
     }
   });
-
   aniIds.forEach((elem) => {
     species.forEach((animals) => {
       if (animals.id === elem) {
@@ -45,10 +43,7 @@ const empSpecies = (p, p2) => {
       }
     });
   });
-
-  if (p2) {
-    return arrLocations;
-  }
+  if (p2) {return arrLocations;}
   return arrSpecies;
 };
 
@@ -70,7 +65,7 @@ function getEmployeesCoverage(param) {
     id: empId(param),
     fullName: empName(empId(param)),
     species: empSpecies(empId(param)),
-    locations: empSpecies(empId(param), true)
+    locations: empSpecies(empId(param), true),
   };
 }
 
