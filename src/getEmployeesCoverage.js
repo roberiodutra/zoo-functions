@@ -11,7 +11,7 @@ const empId = (p) => {
     if (elem.firstName === p.name || elem.lastName === p.name) {
       str = elem.id;
     }
-  })
+  });
   return str;
 };
 
@@ -19,9 +19,9 @@ const empName = (p) => {
   let fullname = '';
   employees.find((elem) => {
     if (elem.id === p) {
-      fullname = `${elem.firstName} ${elem.lastName}`;
+      return fullname = `${elem.firstName} ${elem.lastName}`;
     }
-  })
+  });
   return fullname;
 };
 
@@ -30,7 +30,7 @@ const empSpecies = (p, p2) => {
   const arrLocations = [];
 
   let aniIds = [];
-  
+
   employees.forEach((elem) => {
     if (elem.id === p) {
       aniIds = elem.responsibleFor;
@@ -63,18 +63,15 @@ function getEmployeesCoverage(param) {
       return empLists;
     });
   }
-
   if (!empName(empId(param))) {
     throw new Error('Informações inválidas');
   }
-  
-  const empList = {
+  return {
     id: empId(param),
     fullName: empName(empId(param)),
     species: empSpecies(empId(param)),
     locations: empSpecies(empId(param), true)
   };
-  return empList;
 }
 
 module.exports = getEmployeesCoverage;
