@@ -31,7 +31,7 @@ const empSpecies = (p, p2) => {
   const arrLocations = [];
   employees.find(({ id }) => id === p).responsibleFor
     .forEach((elem) => {
-      return species.map((animals) => {
+      species.forEach((animals) => {
         if (animals.id === elem) {
           arrSpecies.push(animals.name);
           arrLocations.push(animals.location);
